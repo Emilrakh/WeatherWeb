@@ -9,38 +9,55 @@
 </head>
 
 <body>
-<header>
+<main>
     <section class="header-menu">
         <div class="header-menu-title-name">
             <h1>Погода здесь</h1>
         </div>
-        <button class="update-button">Обновить геолокацию</button>
+        <div class="update-button-block">
+            <button class="update-button">Обновить геолокацию</button>
+        </div>
     </section>
-</header>
 
-<main>
     <section class="main-weather">
         <div class="main-weather-city">
             <h2 id="main-name">Saint Petersburg</h2>
-            <div class="main-weather-icon">Иконка погоды</div>
+            <div>
+                <div class="main-weather-icon">Иконка погоды</div>
+            </div>
             <div class="main-weather-degree">8°C</div>
         </div>
-        <dl class="main-weather-info-list">
-            <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-            <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-            <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-            <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-            <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-        </dl>
+        <ul class="main-weather-info-list">
+            <li class="main-weather-info">
+                <div class="weather-info">Ветер</div>
+                <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+            </li>
+            <li class="main-weather-info">
+                <div class="weather-info">Облачность</div>
+                <div class="weather-details">Broken clouds</div>
+            </li>
+            <li class="main-weather-info">
+                <div class="weather-info">Давление</div>
+                <div class="weather-details">1013 hpa</div>
+            </li>
+            <li class="main-weather-info">
+                <div class="weather-info">Влажность</div>
+                <div class="weather-details">52%</div>
+            </li>
+            <li class="main-weather-info">
+                <div class="weather-info">Координаты</div>
+                <div class="weather-details">[59.88, 30.42]</div>
+            </li>
+        </ul>
     </section>
 
     <section class="main-menu">
         <div class="main-menu-title-name">
             <h3>Избранное</h3>
         </div>
-        <div>
+        <div class="favourite-app">
             <input type="text" name="city-name" placeholder="Добавить новый город">
-            <button class="plus-button">+</button>
+            <button class="add-button">+</button>
         </div>
     </section>
 
@@ -50,17 +67,32 @@
                 <h4>Moscow</h4>
                 <div class="favourite-weather-degree">5°C</div>
                 <div class="favourite-weather-icon">Иконка погоды</div>
-                <div class="cross-button">
-                    <button>&times</button>
+                <div class="cross-button-block">
+                    <button class="cross-button">&times</button>
                 </div>
             </div>
-            <dl class="main-weather-info-list">
-                <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-                <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-                <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-                <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-                <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-            </dl>
+            <ul class="main-weather-info-list">
+                <li class="main-weather-info">
+                    <div class="weather-info">Ветер</div>
+                    <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Облачность</div>
+                    <div class="weather-details">Broken clouds</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Давление</div>
+                    <div class="weather-details">1013 hpa</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Влажность</div>
+                    <div class="weather-details">52%</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Координаты</div>
+                    <div class="weather-details">[59.88, 30.42]</div>
+                </li>
+            </ul>
         </div>
 
         <div class="favourite-weather-cities-list">
@@ -68,17 +100,32 @@
                 <h4>Helsinki</h4>
                 <div class="favourite-weather-degree">3°C</div>
                 <div class="favourite-weather-icon">Иконка погоды</div>
-                <div class="cross-button">
-                    <button>&times</button>
+                <div class="cross-button-block">
+                    <button class="cross-button">&times</button>
                 </div>
             </div>
-            <dl class="main-weather-info-list">
-                <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-                <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-                <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-                <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-                <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-            </dl>
+            <ul class="main-weather-info-list">
+                <li class="main-weather-info">
+                    <div class="weather-info">Ветер</div>
+                    <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Облачность</div>
+                    <div class="weather-details">Broken clouds</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Давление</div>
+                    <div class="weather-details">1013 hpa</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Влажность</div>
+                    <div class="weather-details">52%</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Координаты</div>
+                    <div class="weather-details">[59.88, 30.42]</div>
+                </li>
+            </ul>
         </div>
 
         <div class="favourite-weather-cities-list">
@@ -86,17 +133,32 @@
                 <h4>Moscow</h4>
                 <div class="favourite-weather-degree">5°C</div>
                 <div class="favourite-weather-icon">Иконка погоды</div>
-                <div class="cross-button">
-                    <button>&times</button>
+                <div class="cross-button-block">
+                    <button class="cross-button">&times</button>
                 </div>
             </div>
-            <dl class="main-weather-info-list">
-                <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-                <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-                <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-                <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-                <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-            </dl>
+            <ul class="main-weather-info-list">
+                <li class="main-weather-info">
+                    <div class="weather-info">Ветер</div>
+                    <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Облачность</div>
+                    <div class="weather-details">Broken clouds</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Давление</div>
+                    <div class="weather-details">1013 hpa</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Влажность</div>
+                    <div class="weather-details">52%</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Координаты</div>
+                    <div class="weather-details">[59.88, 30.42]</div>
+                </li>
+            </ul>
         </div>
 
         <div class="favourite-weather-cities-list">
@@ -104,17 +166,32 @@
                 <h4>Helsinki</h4>
                 <div class="favourite-weather-degree">3°C</div>
                 <div class="favourite-weather-icon">Иконка погоды</div>
-                <div class="cross-button">
-                    <button>&times</button>
+                <div class="cross-button-block">
+                    <button class="cross-button">&times</button>
                 </div>
             </div>
-            <dl class="main-weather-info-list">
-                <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-                <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-                <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-                <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-                <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-            </dl>
+            <ul class="main-weather-info-list">
+                <li class="main-weather-info">
+                    <div class="weather-info">Ветер</div>
+                    <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Облачность</div>
+                    <div class="weather-details">Broken clouds</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Давление</div>
+                    <div class="weather-details">1013 hpa</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Влажность</div>
+                    <div class="weather-details">52%</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Координаты</div>
+                    <div class="weather-details">[59.88, 30.42]</div>
+                </li>
+            </ul>
         </div>
 
         <div class="favourite-weather-cities-list">
@@ -122,34 +199,64 @@
                 <h4>Moscow</h4>
                 <div class="favourite-weather-degree">5°C</div>
                 <div class="favourite-weather-icon">Иконка погоды</div>
-                <div class="cross-button">
-                    <button>&times</button>
+                <div class="cross-button-block">
+                    <button class="cross-button">&times</button>
                 </div>
             </div>
-            <dl class="main-weather-info-list">
-                <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-                <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-                <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-                <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-                <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-            </dl>
+            <ul class="main-weather-info-list">
+                <li class="main-weather-info">
+                    <div class="weather-info">Ветер</div>
+                    <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Облачность</div>
+                    <div class="weather-details">Broken clouds</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Давление</div>
+                    <div class="weather-details">1013 hpa</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Влажность</div>
+                    <div class="weather-details">52%</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Координаты</div>
+                    <div class="weather-details">[59.88, 30.42]</div>
+                </li>
+            </ul>
         </div>
         <div class="favourite-weather-cities-list">
             <div class="favourite-weather-city">
                 <h4>Helsinki</h4>
                 <div class="favourite-weather-degree">3°C</div>
                 <div class="favourite-weather-icon">Иконка погоды</div>
-                <div class="cross-button">
-                    <button>&times</button>
+                <div class="cross-button-block">
+                    <button class="cross-button">&times</button>
                 </div>
             </div>
-            <dl class="main-weather-info-list">
-                <dt class="weather-info">Ветер</dt><dd class="weather-detail">Moderate breeze, 6.0 m/s, North-northwest</dd>
-                <dt class="weather-info">Облачность</dt><dd class="weather-detail">Broken clouds</dd>
-                <dt class="weather-info">Давление</dt><dd class="weather-detail">1013 hpa</dd>
-                <dt class="weather-info">Влажность</dt><dd class="weather-detail">52%</dd>
-                <dt class="weather-info">Координаты</dt><dd class="weather-detail">[59.88, 30.42]</dd>
-            </dl>
+            <ul class="main-weather-info-list">
+                <li class="main-weather-info">
+                    <div class="weather-info">Ветер</div>
+                    <div class="weather-details">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Облачность</div>
+                    <div class="weather-details">Broken clouds</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Давление</div>
+                    <div class="weather-details">1013 hpa</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Влажность</div>
+                    <div class="weather-details">52%</div>
+                </li>
+                <li class="main-weather-info">
+                    <div class="weather-info">Координаты</div>
+                    <div class="weather-details">[59.88, 30.42]</div>
+                </li>
+            </ul>
         </div>
     </section>
 </main>
