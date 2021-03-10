@@ -1,3 +1,10 @@
+html {
+    font-size: 16px;
+    font-family: "Helvetica Neue", sans-serif;
+    color: #696969;
+    line-height: 1.2;
+}
+
 body {
     margin: 25px 30px 0 30px;
 }
@@ -25,27 +32,22 @@ input {
 
 h1, h3 {
     margin: 0;
-    color: #696969;
-    font-size: 30px;
-    font-family: "Helvetica Neue", serif;
+    font-size: 2rem;
+    font-family: serif;
 }
 
 h2 {
-    color: #696969;
-    font-size: 40px;
+    font-size: 2.5rem;
     margin: 0;
     font-weight: 600;
-    font-family: "Helvetica Neue", sans-serif;
 }
 
 h4 {
     display: flex;
     align-items: center;
     margin: 0;
-    color: #696969;
-    font-size: 28px;
+    font-size: 1.8rem;
     font-weight: 600;
-    font-family: "Helvetica Neue", sans-serif;
 }
 
 ul {
@@ -117,10 +119,8 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 110px;
+    font-size: 7.5rem;
     font-weight: 530;
-    font-family: "Helvetica Neue", sans-serif;
-    color: #696969;
 }
 
 /*main and favourite city*/
@@ -139,9 +139,8 @@ li {
     padding: 5px 5px 5px 10px;
     background-color: #A9A9A9;
     color: white;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 520;
-    font-family: "Helvetica Neue", sans-serif;
 }
 
 .weather-details {
@@ -152,8 +151,7 @@ li {
     margin: 0;
     background-color: #A9A9A9;
     color: #F5F5F5;
-    font-size: 16px;
-    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1rem;
 }
 
 /*Favourite*/
@@ -179,7 +177,7 @@ li {
 .add-button {
     width: 30px;
     height: 30px;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.5;
 }
 
@@ -196,9 +194,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #696969;
-    font-size: 28px;
-    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.75rem;
 }
 
 .favourite-weather-icon {
@@ -222,8 +218,15 @@ li {
 .cross-button {
     width: 30px;
     height: 30px;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.5;
+}
+
+/* Remove outline on the forms and links */
+
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
 }
 
 /*Adapt*/
@@ -232,7 +235,7 @@ li {
 /*    */
 /*}*/
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 780px) {
     input {
         width: 100%;
     }
@@ -282,32 +285,29 @@ li {
     }
 }
 
-@media screen and (max-width: 950px) and (min-width: 822px) {
-    .weather-details {
+@media screen and (max-width: 839px) and (min-width: 780px) {
+    html {
         font-size: 14px;
     }
 }
 
-@media screen and (max-width: 822px) and (min-width: 746px) {
-    .weather-details {
+@media screen and (max-width: 445px) and (min-width: 399px) {
+    html {
         font-size: 12px;
     }
 }
 
-@media screen and (max-width: 746px) and (min-width: 736px) {
-    .weather-details {
+@media screen and (max-width: 399px) and (min-width: 320px) {
+    html {
         font-size: 10px;
     }
 }
 
-@media screen and (max-width: 780px) and (min-width: 736px) {
-    h2 {
-        font-size: 38px;
-    }
-}
-
-@media screen and (max-width: 466px) {
+@media screen and (max-width: 320px) {
    body {
-       min-width: 466px;
+       min-width: 320px;
    }
+    html {
+        font-size: 12px;
+    }
 }
