@@ -7,6 +7,7 @@ html {
 
 body {
     margin: 25px 30px 0 30px;
+    min-width: 260px;
 }
 
 button {
