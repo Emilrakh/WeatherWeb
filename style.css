@@ -118,6 +118,11 @@ li {
     align-items: center;
 }
 
+.main-weather-icon-block img {
+    width: 120px;
+    height: 120px;
+}
+
 .main-weather-degree {
     display: flex;
     align-items: center;
@@ -128,12 +133,12 @@ li {
 
 /*main and favourite city*/
 
-.main-weather-info-list {
+.main-weather-info-list, .favourite-weather-info-list{
     display: flex;
     flex-direction: column;
 }
 
-.main-weather-info {
+.main-weather-info, .favourite-weather-info {
     display: grid;
     grid-template-columns: 1fr 5fr;
 }
