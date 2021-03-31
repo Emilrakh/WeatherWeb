@@ -1,5 +1,5 @@
 const API_key = 'e6f9e1aa5b8e6b6cae6796b1b9450b5e';
-const API_url = `http://api.openweathermap.org/data/2.5/weather?appid=${API_key}`;
+const API_url = `http://api.openweathermap.org/data/2.5/weather?units=metric&appid=${API_key}`;
 
 const nameElement = document.querySelector("#main-name");
 const iconElement = document.querySelector("#main-weather-icon");
@@ -13,9 +13,6 @@ const coordinateElement = document.querySelector("#weather-details-coordinates")
 
 const weather = {};
 
-weather.temperature = {
-    unit : "celsius"
-}
 
 setDefaultPosition()
 
@@ -31,21 +28,21 @@ function setPosition(position){
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
 
-    getWeather(latitude, longitude);
+    getWeatherByCoordinate(latitude, longitude);
 }
 
 function setDefaultPosition(position){
     let latitude = 54.771648;
     let longitude = 56.026932;
 
-    getWeather(latitude, longitude);
+    getWeatherByCoordinate(latitude, longitude);
 }
 
 function showError(error){
     console.log(error.message);
 }
 
-function getWeather(latitude, longitude){
+function getWeatherByCoordinate(latitude, longitude){
     fetch(`${API_url}&lat=${latitude}&lon=${longitude}`)
         .then(function(response){
             let data = response.json();
@@ -58,7 +55,7 @@ function getWeather(latitude, longitude){
         .then(function(data){
         weather.city = data.name;
         weather.iconId = data.weather[0].icon;
-        weather.temperature = Math.floor(data.main.temp - 273);
+        weather.temperature = Math.floor(data.main.temp);
 
         weather.wind = data.wind.speed;
         weather.deg = data.wind.deg;
