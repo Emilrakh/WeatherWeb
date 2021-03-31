@@ -1,3 +1,4 @@
+
 const API_key = 'e6f9e1aa5b8e6b6cae6796b1b9450b5e';
 const API_url = `http://api.openweathermap.org/data/2.5/weather?units=metric&appid=${API_key}`;
 
@@ -13,8 +14,7 @@ const coordinateElement = document.querySelector("#weather-details-coordinates")
 
 const weather = {};
 
-
-setDefaultPosition()
+setDefaultPosition();
 
 function  updateCurrentGeolocation() {
     if ('geolocation' in navigator) {
@@ -75,7 +75,6 @@ function getWeatherByCoordinate(latitude, longitude){
 }
 
 function displayWeather(){
-    // debugger;
     nameElement.innerHTML = `${weather.city}`;
     iconElement.innerHTML = `<img src=" http://openweathermap.org/img/wn/${weather.iconId}@2x.png" width="160px"/>`;
     tempElement.innerHTML = `${weather.temperature}°C`;

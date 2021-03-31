@@ -1,19 +1,28 @@
-// const favouriteCities = new array();
 
 const list = document.querySelector("#favourite-weather-cities");
-const input = document.querySelector("#city-search");
 
-function addCityCard() {
-    let cityName = document.getElementById('#city-search').value;
+function addCityCard(name, isinit) {
+    let cityName = name || document.getElementById('#city-search').value;
 
-    createCityCard(cityName);
+   return getWeatherByName(cityName)
+        .then((data) => {
+            const cityFromStorage = getCitiesLocalStorage().find(item => item === data.name);
+            if (!isinit) {
+                if (cityFromStorage) {
+                    throw new Error("Error: Такой город уже существует 2");
+                } else {
+                    addCityToLocalStorage(data.name)
+                }
+            }
+        return data;
+        })
+        .then((data) => createCityCard(data))
+        .catch((error) => alert(error))
 }
 
-
 async function getWeatherByName(cityName){
-
     return fetch(`${API_url}&q=${cityName}`)
-        .then(function(response){
+        .then(function(response) {
             let data = response.json();
             return data;
         })
@@ -23,13 +32,22 @@ async function getWeatherByName(cityName){
         })
 }
 
-function createCityCard(cityName) {
+function createCitiesList() {
+    const citiesStorage = getCitiesLocalStorage();
 
-    getWeatherByName(cityName).then(data => {
-        const div = document.createElement("div");
-        div.id = "favourite-weather-city-" + `${data.name}`;
+    const promiseArray = [];
+    for (let i = 0; i < citiesStorage.length; i++) {
+        promiseArray.push(addCityCard(citiesStorage[i], true));
+    }
+    Promise.all(promiseArray)
+        .catch((error) => alert(error))
+}
 
-        const temp = `
+function createCityCard(data) {
+    console.log(data);
+    const div = document.createElement("div");
+    div.id = "favourite-weather-city-" + `${data.name}`;
+    const temp = `
             <div class="favourite-weather-city">
                 <h4>${data.name}</h4>
                 <div class="favourite-weather-degree">${Math.floor(data.main.temp)}°C</div>
@@ -63,11 +81,15 @@ function createCityCard(cityName) {
                 </li>
             </ul>`;
 
-        div.innerHTML = temp;
-        list.appendChild(div);
-    })
+    div.innerHTML = temp;
+    list.appendChild(div);
 }
 
 function deleteCityCard(cityName) {
-    list.remove("favourite-weather-city-" + cityName);
+    const city = document.getElementById("favourite-weather-city-" + cityName)
+    list.removeChild(city);
+    deleteCityFromLocalStorage(cityName);
 }
+
+createCitiesList();
+
