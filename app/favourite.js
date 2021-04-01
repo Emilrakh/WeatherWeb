@@ -1,13 +1,12 @@
 
 const list = document.querySelector("#favourite-weather-cities");
 
-function addCityCard(name, isinit) {
-    let cityName = name || document.getElementById('#city-search').value;
+function addCityCard(name, isInit) {
 
-   return getWeatherByName(cityName)
+   return getWeatherByName(name)
         .then((data) => {
             const cityFromStorage = getCitiesLocalStorage().find(item => item === data.name);
-            if (!isinit) {
+            if (!isInit) {
                 if (cityFromStorage) {
                     throw new Error("Error: Такой город уже существует 2");
                 } else {
@@ -18,6 +17,11 @@ function addCityCard(name, isinit) {
         })
         .then((data) => createCityCard(data))
         .catch((error) => alert(error))
+}
+
+function addCityByName(name){
+    let cityName = name || document.getElementById('#city-search').value;
+    addCityCard(cityName);
 }
 
 async function getWeatherByName(cityName){
@@ -37,9 +41,13 @@ function createCitiesList() {
 
     const promiseArray = [];
     for (let i = 0; i < citiesStorage.length; i++) {
-        promiseArray.push(addCityCard(citiesStorage[i], true));
+        promiseArray.push(getWeatherByName(citiesStorage[i]));
     }
     Promise.all(promiseArray)
+        .then((array) => array.forEach(item => {
+            console.log(array);
+            createCityCard(item)
+        }))
         .catch((error) => alert(error))
 }
 
@@ -47,6 +55,9 @@ function createCityCard(data) {
     console.log(data);
     const div = document.createElement("div");
     div.id = "favourite-weather-city-" + `${data.name}`;
+
+    const degNESW = convertDeg(data.wind.deg);
+
     const temp = `
             <div class="favourite-weather-city">
                 <h4>${data.name}</h4>
@@ -61,7 +72,7 @@ function createCityCard(data) {
             <ul class="favourite-weather-info-list">
                 <li class="favourite-weather-info">
                     <div class="weather-info">Ветер</div>
-                    <div class="weather-details">${data.wind.speed} m/s, ${data.wind.deg}</div>
+                    <div class="weather-details">${data.wind.speed} m/s, ${degNESW}</div>
                 </li>
                 <li class="favourite-weather-info">
                     <div class="weather-info">Облачность</div>
