@@ -1,4 +1,3 @@
-
 const nameElement = document.querySelector("#main-name");
 const iconElement = document.querySelector("#main-weather-icon");
 const tempElement = document.querySelector("#main-weather-degree");

@@ -13,7 +13,7 @@ function getWeatherByCityFromBack(cityName){
 }
 
 function getWeatherByCoordinateFromBack(latitude, longitude){
-     return fetch(`${BACK_URL}/weather/coordinates?lat=${latitude}&lon=${longitude}`)
+    return fetch(`${BACK_URL}/weather/coordinates?lat=${latitude}&lon=${longitude}`)
         .then(function(response){
             let data = response.json();
             return data;
