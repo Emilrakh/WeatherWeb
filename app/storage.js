@@ -1,5 +1,5 @@
 
-async function getCitiesLocalStorage() {
+async function getCitiesStorage() {
     return fetch(`${BACK_URL}/favourites`)
         .then((response) => {
             let data = response.json();
@@ -7,11 +7,15 @@ async function getCitiesLocalStorage() {
         });
 }
 
-function addCityToLocalStorage(city) {
-    fetch(`${BACK_URL}/favourites?cityName=${city}`, {method: 'POST'});
+function addCityToStorage(city) {
+    return fetch(`${BACK_URL}/favourites?cityName=${city}`, {method: 'POST'})
+        .then((response) => {
+            let data = response.json();
+            return data;
+        });
 }
 
-function deleteCityFromLocalStorage(city) {
+function deleteCityFromStorage(city) {
     fetch(`${BACK_URL}/favourites?cityName=${city}`, {method: 'DELETE'});
 }
 

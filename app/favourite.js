@@ -1,10 +1,10 @@
 
 async function addCityCard(name) {
-    let data = await addCityToLocalStorage(name);
+    let data = await addCityToStorage(name);
     createCityCard(data);
 }
 
-function handleKeyPress(e){
+function handleKeyPress(e) {
     let key=e.keyCode || e.which;
     if (key === 13){
         addCityByName();
@@ -12,7 +12,7 @@ function handleKeyPress(e){
     }
 }
 
-function addCityByName(name){
+function addCityByName(name) {
     let cityName = name || document.getElementById('#city-search').value;
     onclick = document.getElementById('#city-search').value = '';
     addCityCard(cityName);
@@ -50,7 +50,7 @@ function createCityCard(data) {
 
         clone.querySelector("#cross-button").onclick = () => {
             newTemplate.removeChild(clone);
-            deleteCityFromLocalStorage(data.name);
+            deleteCityFromStorage(data.name);
         };
 
     } else {
@@ -59,7 +59,7 @@ function createCityCard(data) {
 }
 
 async function createCitiesList() {
-    let {data} = await getCitiesLocalStorage();
+    let {data} = await getCitiesStorage();
     const promiseArray = [];
 
     for (let i = 0; i < data.length; i++) {
