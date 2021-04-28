@@ -1,7 +1,13 @@
 
 async function addCityCard(name) {
     let data = await addCityToStorage(name);
-    createCityCard(data);
+    if (data.message.includes( "already exists")) {
+        alert("This city already exists in your favorites")
+    } else if (data.message.includes( "Not find such city")) {
+        alert("Not find such city")
+    } else {
+        createCityCard(data);
+    }
 }
 
 function handleKeyPress(e) {
