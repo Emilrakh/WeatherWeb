@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="Weather, Погода">
     <title>Weather</title>
-    <link rel="icon" href="img/heavy-rain.svg">
+    <link rel="icon" href="img/icon.svg">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,11 +12,11 @@
 <header>
     <section class="header-menu">
         <div class="header-menu-title-name">
-            <h1>Погода здесь</h1>
+            <h1>The Weather</h1>
         </div>
         <div class="update-button-block">
             <button onclick="updateCurrentGeolocation()" class="update-button">
-                <span class="text-refresh">Обновить геолокацию</span>
+                <span class="text-refresh">Update geolocation</span>
                 <img class="text-refresh-none" src="img/refresh.svg">
             </button>
         </div>
@@ -24,6 +24,11 @@
 </header>
 
 <main>
+    <section class="loader">
+        <div class="loader-block"></div>
+        <h2>Loading</h2>
+    </section>
+
     <section class="main-weather">
         <div class="main-weather-city">
             <h2 id="main-name"></h2>
@@ -32,44 +37,83 @@
         </div>
         <ul class="main-weather-info-list">
             <li class="main-weather-info">
-                <div class="weather-info">Ветер</div>
+                <div class="weather-info">Wind</div>
                 <div id="weather-details-wind" class="weather-details"></div>
             </li>
             <li class="main-weather-info">
-                <div class="weather-info">Облачность</div>
+                <div class="weather-info">Cloud</div>
                 <div id="weather-details-cloud" class="weather-details"></div>
             </li>
             <li class="main-weather-info">
-                <div class="weather-info">Давление</div>
+                <div class="weather-info">Pressure</div>
                 <div id="weather-details-pressure" class="weather-details"></div>
             </li>
             <li class="main-weather-info">
-                <div class="weather-info">Влажность</div>
+                <div class="weather-info">Humidity</div>
                 <div id="weather-details-humidity" class="weather-details"></div>
             </li>
             <li class="main-weather-info">
-                <div class="weather-info">Координаты</div>
+                <div class="weather-info">Coordinate</div>
                 <div id="weather-details-coordinates" class="weather-details"></div>
             </li>
         </ul>
-        <script src="app/main.js"></script>
     </section>
 
     <section class="main-menu">
         <div class="main-menu-title-name">
-            <h3>Избранное</h3>
+            <h3>Favourite</h3>
         </div>
         <div class="favourite-app">
-            <input id="#city-search" type="text" name="city-name" placeholder="Добавить новый город">
+            <input id="#city-search" type="text" name="city-name" onclick="this.value=''"
+                   placeholder="New city name" onkeypress="handleKeyPress(event)">
             <div class="add-button-block"><button onclick="addCityByName()" class="add-button">+</button></div>
         </div>
     </section>
 
     <section id="favourite-weather-cities" class="favourite-weather-cities">
 <!--        Тут все создается-->
+        <template id="favourite-weather-cities-temp">
+            <div>
+                <div class="favourite-weather-city">
+                    <h4></h4>
+                    <div class="favourite-weather-degree"></div>
+                    <div class="favourite-weather-icon">
+                        <img src="" width="80px"/>
+                    </div>
+                    <div class="cross-button-block">
+                        <button id="cross-button" class="cross-button">&times</button>
+                    </div>
+                </div>
+                <ul class="favourite-weather-info-list">
+                    <li class="favourite-weather-info">
+                        <div class="weather-info">Wind</div>
+                        <div class="weather-details weather-details-wind"></div>
+                    </li>
+                    <li class="favourite-weather-info">
+                        <div class="weather-info">Cloud</div>
+                        <div class="weather-details weather-details-cloud"></div>
+                    </li>
+                    <li class="favourite-weather-info">
+                        <div class="weather-info">Pressure</div>
+                        <div class="weather-details weather-details-pressure"></div>
+                    </li>
+                    <li class="favourite-weather-info">
+                        <div class="weather-info">Humidity</div>
+                        <div class="weather-details weather-details-humidity"></div>
+                    </li>
+                    <li class="favourite-weather-info">
+                        <div class="weather-info">Coordinate</div>
+                        <div class="weather-details weather-details-coordinate"></div>
+                    </li>
+                </ul>
+            </div>
+        </template>
     </section>
+
 </main>
+<script src="app/handler.js"></script>
 <script src="app/localStorage.js"></script>
+<script src="app/main.js"></script>
 <script src="app/favourite.js"></script>
 </body>
 </html>

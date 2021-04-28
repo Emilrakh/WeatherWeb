@@ -98,7 +98,7 @@ li {
 /*Main weather*/
 
 .main-weather {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 80px;
 }
@@ -192,7 +192,7 @@ li {
 /*Favourite cities*/
 
 .favourite-weather-cities {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 20px;
     grid-column-gap: 80px;
@@ -336,4 +336,29 @@ li {
     html {
         font-size: 10px;
     }
+}
+
+/*Loader*/
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.loader-block {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #A9A9A9;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

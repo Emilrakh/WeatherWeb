@@ -1,106 +1,75 @@
 
-const list = document.querySelector("#favourite-weather-cities");
+async function addCityCard(name) {
+    let data = await addCityToLocalStorage(name);
+    createCityCard(data);
+}
 
-function addCityCard(name, isInit) {
-
-   return getWeatherByName(name)
-        .then((data) => {
-            const cityFromStorage = getCitiesLocalStorage().find(item => item === data.name);
-            if (!isInit) {
-                if (cityFromStorage) {
-                    throw new Error("Error: Такой город уже существует 2");
-                } else {
-                    addCityToLocalStorage(data.name)
-                }
-            }
-        return data;
-        })
-        .then((data) => createCityCard(data))
-        .catch((error) => alert(error))
+function handleKeyPress(e){
+    let key=e.keyCode || e.which;
+    if (key === 13){
+        addCityByName();
+        onclick = document.getElementById('#city-search').value = '';
+    }
 }
 
 function addCityByName(name){
     let cityName = name || document.getElementById('#city-search').value;
+    onclick = document.getElementById('#city-search').value = '';
     addCityCard(cityName);
 }
 
-async function getWeatherByName(cityName){
-    return fetch(`${API_url}&q=${cityName}`)
-        .then(function(response) {
-            let data = response.json();
-            return data;
-        })
-        .then((data) => {
-            console.log(data);
-            return data;
-        })
+function createCityCard(data) {
+    if ('content' in document.createElement('template')) {
+        const template = document.querySelector('#favourite-weather-cities-temp');
+
+        const favouriteNameElement = template.content.querySelector(".favourite-weather-city h4");
+        const favouriteTempElement = template.content.querySelector(".favourite-weather-degree");
+        const favouriteIconElement = template.content.querySelector(".favourite-weather-icon");
+
+        const favouriteWindElement = template.content.querySelector(".weather-details-wind");
+        const favouriteCloudElement = template.content.querySelector(".weather-details-cloud");
+        const favouritePressureElement = template.content.querySelector(".weather-details-pressure");
+        const favouriteHumidityElement = template.content.querySelector(".weather-details-humidity");
+        const favouriteCoordinateElement = template.content.querySelector(".weather-details-coordinate");
+
+        favouriteNameElement.innerHTML = data.name;
+        favouriteTempElement.innerHTML = `${Math.floor(data.main.temp)}°C`;
+        favouriteIconElement.innerHTML = `<img src=" http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width="80px">`;
+
+        const degNESW = convertDeg(data.wind.deg);
+
+        favouriteWindElement.innerHTML = `${data.wind.speed} m/s, ${degNESW}`;
+        favouriteCloudElement.innerHTML = `${data.weather[0].description}`;
+        favouritePressureElement.innerHTML = `${data.main.pressure} hpa`;
+        favouriteHumidityElement.innerHTML = `${data.main.humidity}%`;
+        favouriteCoordinateElement.innerHTML = `[${Number(data.coord.lat).toFixed(2)}, ${Number(data.coord.lon).toFixed(2)}]`;
+
+        const clone = template.content.querySelector('div').cloneNode(true);
+        const newTemplate = document.querySelector("#favourite-weather-cities");
+        newTemplate.appendChild(clone);
+
+        clone.querySelector("#cross-button").onclick = () => {
+            newTemplate.removeChild(clone);
+            deleteCityFromLocalStorage(data.name);
+        };
+
+    } else {
+        throw new Error("Template isn't supported by the browser");
+    }
 }
 
-function createCitiesList() {
-    const citiesStorage = getCitiesLocalStorage();
-
+async function createCitiesList() {
+    let {data} = await getCitiesLocalStorage();
     const promiseArray = [];
-    for (let i = 0; i < citiesStorage.length; i++) {
-        promiseArray.push(getWeatherByName(citiesStorage[i]));
+
+    for (let i = 0; i < data.length; i++) {
+        promiseArray.push(getWeatherByCityFromBack(data[i]));
     }
     Promise.all(promiseArray)
         .then((array) => array.forEach(item => {
-            console.log(array);
-            createCityCard(item)
+            createCityCard(item);
         }))
         .catch((error) => alert(error))
 }
 
-function createCityCard(data) {
-    console.log(data);
-    const div = document.createElement("div");
-    div.id = "favourite-weather-city-" + `${data.name}`;
-
-    const degNESW = convertDeg(data.wind.deg);
-
-    const temp = `
-            <div class="favourite-weather-city">
-                <h4>${data.name}</h4>
-                <div class="favourite-weather-degree">${Math.floor(data.main.temp)}°C</div>
-                <div class="favourite-weather-icon">
-                <img src=" http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width="80px"/>
-                </div>
-                <div class="cross-button-block">
-                    <button onclick="deleteCityCard(this.id)" id="${data.name}" class="cross-button">&times</button>
-                </div>
-            </div>
-            <ul class="favourite-weather-info-list">
-                <li class="favourite-weather-info">
-                    <div class="weather-info">Ветер</div>
-                    <div class="weather-details">${data.wind.speed} m/s, ${degNESW}</div>
-                </li>
-                <li class="favourite-weather-info">
-                    <div class="weather-info">Облачность</div>
-                    <div class="weather-details">${data.weather[0].description}</div>
-                </li>
-                <li class="favourite-weather-info">
-                    <div class="weather-info">Давление</div>
-                    <div class="weather-details">${data.main.pressure} hpa</div>
-                </li>
-                <li class="favourite-weather-info">
-                    <div class="weather-info">Влажность</div>
-                    <div class="weather-details">${data.main.humidity}%</div>
-                </li>
-                <li class="favourite-weather-info">
-                    <div class="weather-info">Координаты</div>
-                    <div class="weather-details">[${Number(data.coord.lat).toFixed(2)}, ${Number(data.coord.lon).toFixed(2)}]</div>
-                </li>
-            </ul>`;
-
-    div.innerHTML = temp;
-    list.appendChild(div);
-}
-
-function deleteCityCard(cityName) {
-    const city = document.getElementById("favourite-weather-city-" + cityName)
-    list.removeChild(city);
-    deleteCityFromLocalStorage(cityName);
-}
-
 createCitiesList();
-
