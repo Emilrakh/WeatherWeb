@@ -1,9 +1,9 @@
 
 async function addCityCard(name) {
     let data = await addCityToStorage(name);
-    if (data.message.includes( "This city already exists in your favorites")) {
+    if (data?.message?.includes( "This city already exists in your favorites")) {
         alert("This city already exists in your favorites")
-    } else if (data.message.includes( "Not find such city")) {
+    } else if (data?.message?.includes( "Not find such city")) {
         alert("Not find such city")
     } else {
         createCityCard(data);
